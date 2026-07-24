@@ -340,6 +340,7 @@ export default function Home() {
           <div>
             <p className="font-semibold text-white">诺塔 NUOTA</p>
             <p className="mt-2 text-sm leading-6 text-white/70">诺塔智能体运营系统 NUOTA Agentic OS</p>
+            <p className="mt-2 text-sm leading-6 text-white/70">美业智能体运营系统：从门店经营到连锁协同，让方法论进入系统执行。</p>
             <p className="mt-4 text-sm text-white/60">邮箱：fuxirui@tatazixun.com</p>
             <p className="mt-1 text-sm text-white/60">电话：17279676768</p>
           </div>
