@@ -7,6 +7,12 @@ export const contact = {
   company: '上海嘉塔诺塔企业管理咨询有限公司',
 }
 
+export const modelPartners = {
+  title: 'AI 模型合作',
+  note: 'Logo 占位，正式启用前请确认品牌授权与官方 Logo 素材。',
+  items: ['Kimi', 'MiniMax', 'DeepSeek', '通义千问', '等国内厂商品牌'],
+}
+
 export const navItems = [
   { label: '产品作用', href: '#value' },
   { label: '产品特点', href: '#features' },

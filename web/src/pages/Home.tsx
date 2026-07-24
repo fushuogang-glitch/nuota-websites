@@ -290,7 +290,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-20">
+        <section id="faq" className="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-20">
           <SectionHeading eyebrow="FAQ" title="常见问题" />
           <div className="mt-10 space-y-4">
             {faqs.map((item) => (
@@ -335,17 +335,48 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-black py-10 text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 md:flex-row md:items-center md:justify-between md:px-8">
+      <footer className="bg-black py-12 text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 md:px-8 lg:grid-cols-[1.2fr_0.6fr_0.6fr_1fr]">
           <div>
             <p className="font-semibold text-white">诺塔 NUOTA</p>
-            <p className="mt-1 text-sm text-white/70">诺塔智能体运营系统 NUOTA Agentic OS</p>
+            <p className="mt-2 text-sm leading-6 text-white/70">诺塔智能体运营系统 NUOTA Agentic OS</p>
+            <p className="mt-4 text-sm text-white/60">邮箱：fuxirui@tatazixun.com</p>
+            <p className="mt-1 text-sm text-white/60">电话：17279676768</p>
           </div>
-          <div className="text-sm text-white/60">
-            <p>© 上海嘉塔诺塔企业管理咨询有限公司</p>
-            <p className="mt-1">邮箱：fuxirui@tatazixun.com · 电话：17279676768</p>
-            <p className="mt-1">ICP备案号：待补充 · 隐私政策 / 用户协议</p>
+          <div>
+            <p className="text-sm font-semibold text-white">导航</p>
+            <div className="mt-4 grid gap-2 text-sm text-white/60">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className="transition hover:text-white">
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
+          <div>
+            <p className="text-sm font-semibold text-white">资源</p>
+            <div className="mt-4 grid gap-2 text-sm text-white/60">
+              <a href="#faq" className="transition hover:text-white">常见问题</a>
+              <a href="#demo" className="transition hover:text-white">联系顾问</a>
+              <a href="#top" className="transition hover:text-white">隐私政策</a>
+              <a href="#top" className="transition hover:text-white">用户协议</a>
+            </div>
+          </div>
+          <div className="rounded-[1.5rem] border border-white/15 p-5">
+            <p className="text-sm font-semibold text-white">AI 模型合作</p>
+            <p className="mt-2 text-xs leading-5 text-white/50">Logo 占位，正式启用前请确认品牌授权与官方 Logo 素材。</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {['Kimi', 'MiniMax', 'DeepSeek', '通义千问', '等国内厂商品牌'].map((item) => (
+                <span key={item} className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/80">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-white/10 px-4 pt-6 text-xs text-white/50 md:flex-row md:items-center md:justify-between md:px-8">
+          <p>© 上海嘉塔诺塔企业管理咨询有限公司</p>
+          <p>ICP备案号：待补充 · 隐私政策 / 用户协议</p>
         </div>
       </footer>
     </div>
