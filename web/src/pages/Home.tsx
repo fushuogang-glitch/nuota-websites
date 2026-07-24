@@ -9,6 +9,7 @@ import {
   AGENT_COUNT,
   agents,
   cases,
+  clientBrands,
   comparisons,
   faqs,
   features,
@@ -287,6 +288,22 @@ export default function Home() {
                 </Card>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="clients" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
+          <SectionHeading eyebrow={clientBrands.eyebrow} title={clientBrands.title} desc={clientBrands.desc} />
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {clientBrands.items.map((name) => (
+              <span key={name} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-sm text-black shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                </span>
+                {name}
+              </span>
+            ))}
+            <span className="inline-flex items-center rounded-full px-2 py-2 text-sm text-black/50">{clientBrands.more}</span>
           </div>
         </section>
 

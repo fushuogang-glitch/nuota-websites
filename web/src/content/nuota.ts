@@ -13,6 +13,27 @@ export const modelPartners = {
   items: ['Kimi', 'MiniMax', 'DeepSeek', '通义千问', '等国内厂商品牌'],
 }
 
+export const clientBrands = {
+  eyebrow: 'CLIENTS',
+  title: '塔塔咨询客户 · 诺塔系统接入门店',
+  desc: '以下品牌为塔塔咨询服务/系统接入客户，展示以客户授权为准，更多门店持续接入中。',
+  items: [
+    '宁波 AIMEILI',
+    '北京科林研肌',
+    '盐城木子美学',
+    '武汉壹贰壹',
+    '嘉兴妍肌嘉',
+    '台州 Q Skin',
+    '台州觅尚',
+    '长沙 Q+新颜',
+    '扬州三只熊',
+    '泰州雨非',
+    '深圳青鸾美学',
+    '忻州雅图安',
+  ],
+  more: '…… 更多门店持续接入中',
+}
+
 export const navItems = [
   { label: '产品作用', href: '#value' },
   { label: '产品特点', href: '#features' },
