@@ -1,5 +1,12 @@
 export const AGENT_COUNT = 9
 
+export const contact = {
+  topSlogan: '用诺塔 NUOTA Agentic OS · 让中国美业运营智能起来',
+  email: 'fuxirui@tatazixun.com',
+  phone: '17279676768',
+  company: '上海嘉塔诺塔企业管理咨询有限公司',
+}
+
 export const navItems = [
   { label: '产品作用', href: '#value' },
   { label: '产品特点', href: '#features' },

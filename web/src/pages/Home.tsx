@@ -49,6 +49,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="sticky top-0 z-40 border-b border-black/10 bg-white/95 backdrop-blur">
+        <div className="bg-black text-white">
+          <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-4 px-4 text-xs md:px-8">
+            <p className="truncate font-medium tracking-wide">用诺塔 NUOTA Agentic OS · 让中国美业运营智能起来</p>
+            <div className="hidden items-center gap-5 text-white/70 md:flex">
+              <span>邮箱：fuxirui@tatazixun.com</span>
+              <span>电话：17279676768</span>
+            </div>
+          </div>
+        </div>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
           <a href="#top" className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-sm font-bold text-white">N</span>
@@ -303,6 +312,11 @@ export default function Home() {
               <p className={`mt-4 text-sm leading-7 ${mutedText}`}>
                 提交后顾问将在 1 个工作日内联系你。当前表单为前端 UI，接 CRM / 企业微信 webhook 后即可上线。
               </p>
+              <div className="mt-6 space-y-2 text-sm text-black/60">
+                <p>官方邮箱：fuxirui@tatazixun.com</p>
+                <p>联系电话：17279676768</p>
+                <p>公司主体：上海嘉塔诺塔企业管理咨询有限公司</p>
+              </div>
             </div>
             <form className="grid gap-4">
               <div className="grid gap-4 md:grid-cols-2">
@@ -328,8 +342,9 @@ export default function Home() {
             <p className="mt-1 text-sm text-white/70">诺塔智能体运营系统 NUOTA Agentic OS</p>
           </div>
           <div className="text-sm text-white/60">
-            <p>© 嘉塔诺塔</p>
-            <p className="mt-1">ICP备案号 / 联系方式 / 隐私政策 / 用户协议：待补充</p>
+            <p>© 上海嘉塔诺塔企业管理咨询有限公司</p>
+            <p className="mt-1">邮箱：fuxirui@tatazixun.com · 电话：17279676768</p>
+            <p className="mt-1">ICP备案号：待补充 · 隐私政策 / 用户协议</p>
           </div>
         </div>
       </footer>
