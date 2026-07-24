@@ -1,0 +1,318 @@
+import { ArrowRight, Bot, Check, ListChecks, RefreshCw, Target } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  AGENT_COUNT,
+  agents,
+  cases,
+  comparisons,
+  faqs,
+  features,
+  hero,
+  navItems,
+  otaSteps,
+  pricingPlans,
+  values,
+} from '@/content/nuota'
+
+const icons = [Target, ListChecks, Bot, RefreshCw]
+
+function SectionHeading({
+  eyebrow,
+  title,
+  desc,
+}: {
+  eyebrow: string
+  title: string
+  desc?: string
+}) {
+  return (
+    <div className="mx-auto max-w-3xl text-center">
+      <Badge variant="secondary" className="mb-4 rounded-full px-4 py-1 text-xs tracking-[0.2em]">
+        {eyebrow}
+      </Badge>
+      <h2 className="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">{title}</h2>
+      {desc ? <p className="mt-4 text-base leading-7 text-slate-600">{desc}</p> : null}
+    </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-[#f6f3ee] text-slate-950">
+      <header className="sticky top-0 z-40 border-b border-slate-900/10 bg-[#f6f3ee]/90 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
+          <a href="#top" className="flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white">N</span>
+            <span className="leading-tight">
+              <span className="block text-sm font-semibold">诺塔</span>
+              <span className="block text-xs tracking-[0.24em] text-slate-500">NUOTA</span>
+            </span>
+          </a>
+          <nav className="hidden items-center gap-6 text-sm text-slate-600 lg:flex">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="transition hover:text-slate-950">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <Button asChild className="rounded-full bg-slate-950 text-white hover:bg-slate-800">
+            <a href="#demo">预约演示</a>
+          </Button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(122,106,83,0.22),transparent_34%),radial-gradient(circle_at_left,rgba(49,84,109,0.16),transparent_30%)]" />
+          <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-16 md:px-8 md:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <Badge className="rounded-full bg-slate-950 px-4 py-1 text-xs tracking-[0.22em] text-white hover:bg-slate-950">
+                {hero.eyebrow}
+              </Badge>
+              <h1 className="mt-6 text-5xl font-semibold tracking-tight md:text-7xl">{hero.title}</h1>
+              <p className="mt-5 text-2xl font-medium text-[#31546d] md:text-3xl">{hero.slogan}</p>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">{hero.description}</p>
+              <p className="mt-4 text-sm font-medium text-[#7a6a53]">{hero.beauty}</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button asChild size="lg" className="rounded-full bg-slate-950 px-8 text-white hover:bg-slate-800">
+                  <a href="#demo">
+                    {hero.primaryCta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full border-slate-300 bg-white/70 px-8">
+                  <a href="#pricing">{hero.secondaryCta}</a>
+                </Button>
+              </div>
+              <p className="mt-6 text-xs leading-6 text-slate-500">{hero.note}</p>
+            </div>
+            <Card className="border-slate-900/10 bg-white/80 shadow-2xl shadow-slate-900/10 backdrop-blur">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between text-base">
+                  <span>OTA 执行模型</span>
+                  <Badge variant="outline">Objective → Task → Agent</Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {otaSteps.map((step, index) => (
+                  <div key={step.title} className="rounded-2xl border border-slate-200 bg-[#fbfaf7] p-4">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-950 text-xs font-semibold text-white">
+                        {index + 1}
+                      </span>
+                      <p className="font-medium">{step.title}</p>
+                    </div>
+                    <p className="mt-3 text-sm leading-6 text-slate-600">{step.desc}</p>
+                  </div>
+                ))}
+                <Separator />
+                <p className="text-sm leading-6 text-slate-600">让目标进系统、任务有人盯、执行被推动、结果可追踪。</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <SectionHeading
+            eyebrow="CATEGORY"
+            title="不是 CRM，不是 ERP，是智能体运营系统"
+            desc="传统软件等待人录入和查看，诺塔让系统主动提醒、协同、催办和复盘。"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {comparisons.map((item) => (
+              <Card key={item.title} className="border-slate-900/10 bg-white/80">
+                <CardHeader>
+                  <CardTitle>{item.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="value" className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <SectionHeading eyebrow="VALUE" title="诺塔的作用：让目标真正落到每天的动作里" />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {values.map((item, index) => {
+              const Icon = icons[index] ?? Target
+              return (
+                <Card key={item.title} className="border-slate-900/10 bg-white/80">
+                  <CardHeader>
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <CardTitle className="pt-4 text-lg">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </section>
+
+        <section id="features" className="border-y border-slate-900/10 bg-white/60">
+          <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+            <SectionHeading eyebrow="FEATURES" title="为什么诺塔不是普通管理工具" />
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              {features.map((item, index) => (
+                <Card key={item.title} className="border-slate-900/10 bg-[#fbfaf7]">
+                  <CardHeader>
+                    <Badge variant="outline" className="w-fit">0{index + 1}</Badge>
+                    <CardTitle className="text-base">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="agents" className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <SectionHeading
+            eyebrow="AGENTS"
+            title={`${AGENT_COUNT} 个 AI Agent 数字员工，各司其职全天候运转`}
+            desc="每个 Agent 专注一个经营环节，协同完成目标拆解、过程跟进、风险预警和结果反馈。数量口径可在 src/content/nuota.ts 中统一调整。"
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {agents.map((agent) => (
+              <Card key={agent.code} className="border-slate-900/10 bg-white/80">
+                <CardHeader className="flex-row items-center justify-between space-y-0">
+                  <CardTitle className="text-base">{agent.name}</CardTitle>
+                  <Badge variant="secondary">{agent.code}</Badge>
+                </CardHeader>
+                <CardContent className="text-sm leading-6 text-slate-600">{agent.desc}</CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="beauty" className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <div className="rounded-[2rem] bg-slate-950 px-6 py-12 text-white md:px-12">
+            <Badge className="bg-white/10 text-white hover:bg-white/10">BEAUTY EDITION</Badge>
+            <h2 className="mt-5 text-3xl font-semibold md:text-4xl">诺塔智能体运营系统 · 美业版</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
+              面向美业门店、连锁品牌与经营团队的 AI Agent 智能体运营系统。把塔塔咨询方法论沉淀进系统，覆盖数据、内容、引流、会员、流程、财务、人力、客服与经营复盘。
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild className="rounded-full bg-white text-slate-950 hover:bg-white/90">
+                <a href="#demo">预约美业版演示</a>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full border-white/30 bg-transparent text-white hover:bg-white/10">
+                <a href="#pricing">查看美业版定价</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <SectionHeading eyebrow="PRICING" title="透明定价，无隐藏费用" desc="不含硬件设备，远程配置上线，仅收取年费。具体功能以实际开通版本为准。" />
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {pricingPlans.map((plan) => (
+              <Card key={plan.name} className={plan.recommended ? 'relative border-slate-950 bg-white shadow-xl' : 'border-slate-900/10 bg-white/80'}>
+                {plan.recommended ? <Badge className="absolute -top-3 left-6 bg-slate-950 text-white">推荐</Badge> : null}
+                <CardHeader>
+                  <CardTitle>{plan.name}</CardTitle>
+                  <div className="pt-2">
+                    <span className="text-4xl font-semibold">{plan.price}</span>
+                    <span className="text-slate-500">{plan.unit}</span>
+                  </div>
+                  <p className="text-sm text-slate-500">{plan.monthly}</p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm text-slate-600">
+                    {plan.features.map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <Check className="mt-0.5 h-4 w-4 text-[#31546d]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild className="mt-6 w-full rounded-full" variant={plan.recommended ? 'default' : 'outline'}>
+                    <a href="#demo">{plan.cta}</a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="cases" className="border-y border-slate-900/10 bg-white/60">
+          <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+            <SectionHeading eyebrow="CASES" title="从咨询方法论到系统执行" desc="诺塔由嘉塔诺塔推出，承接塔塔咨询在新美业十余年的经营方法论。" />
+            <div className="mt-10 grid gap-4 lg:grid-cols-3">
+              {cases.map((item) => (
+                <Card key={item.name} className="border-slate-900/10 bg-[#fbfaf7]">
+                  <CardHeader>
+                    <Badge variant="outline" className="w-fit">{item.city}</Badge>
+                    <CardTitle className="text-lg">{item.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm leading-6 text-slate-600">{item.desc}</p>
+                    <p className="mt-4 text-xs font-medium text-[#7a6a53]">→ {item.tag}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 py-16 md:px-8">
+          <SectionHeading eyebrow="FAQ" title="常见问题" />
+          <div className="mt-10 space-y-4">
+            {faqs.map((item) => (
+              <Card key={item.q} className="border-slate-900/10 bg-white/80">
+                <CardHeader>
+                  <CardTitle className="text-base">{item.q}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm leading-6 text-slate-600">{item.a}</CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="demo" className="mx-auto max-w-7xl px-4 pb-20 md:px-8">
+          <div className="grid gap-8 rounded-[2rem] border border-slate-900/10 bg-white/80 p-6 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <Badge variant="secondary" className="rounded-full">DEMO</Badge>
+              <h2 className="mt-4 text-3xl font-semibold">预约演示，看看 AI Agent 怎么推动团队执行</h2>
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                提交后顾问将在 1 个工作日内联系你。当前表单为前端 UI，接 CRM / 企业微信 webhook 后即可上线。
+              </p>
+            </div>
+            <form className="grid gap-4">
+              <div className="grid gap-4 md:grid-cols-2">
+                <Input placeholder="姓名" />
+                <Input placeholder="手机号" />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <Input placeholder="门店数量：单店 / 2-5 家 / 6-20 家 / 20+ 家" />
+                <Input placeholder="所在城市" />
+              </div>
+              <Input placeholder="当前最头疼的问题：目标不落 / 员工执行 / 会员复购 / 引流成本 / 数据不清" />
+              <Textarea placeholder="备注：想重点看哪个 Agent 或哪个场景？" rows={4} />
+              <Button className="rounded-full bg-slate-950 text-white hover:bg-slate-800">提交预约</Button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-slate-900/10 bg-slate-950 py-10 text-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 md:flex-row md:items-center md:justify-between md:px-8">
+          <div>
+            <p className="font-semibold">诺塔 NUOTA</p>
+            <p className="mt-1 text-sm text-white/60">诺塔智能体运营系统 NUOTA Agentic OS</p>
+          </div>
+          <div className="text-sm text-white/50">
+            <p>© 嘉塔诺塔</p>
+            <p className="mt-1">ICP备案号 / 联系方式 / 隐私政策 / 用户协议：待补充</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}

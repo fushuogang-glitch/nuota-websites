@@ -17,30 +17,42 @@ docs/
   03-replacement-and-compliance.md # 旧文替换、商标/广告法/SEO/301 清单
   04-functional-requirements.md    # 功能需求、CMS 字段、表单、埋点、性能
   05-content-assets-checklist.md   # 上线前需要的素材与确认项
+web/                               # 诺塔产品官网 React + Tailwind 代码
+  src/content/nuota.ts             # 官网文案与配置，Agent 数量在这里统一改
+  src/pages/Home.tsx               # 首页结构，适合交给 v0 继续做视觉设计
 ```
+
+## 产品官网代码
+
+`web/` 是 React + TypeScript + Vite + Tailwind CSS + shadcn/ui 项目，方便后续用 v0 设计页面，也可部署到 Vercel。
+
+```bash
+cd web
+npm install
+npm run dev
+npm run build
+```
+
+Vercel 部署时把 Root Directory 设置为 `web`。
 
 ## 必须先确认的决策
 
-1. AI Agent 数量：官网旧页是 **12 个数字员工**，新品牌文案是 **9 个 AI Agent**。必须统一。
+1. AI Agent 数量：官网旧页是 **12 个数字员工**，新品牌文案默认是 **9 个 AI Agent**。代码里统一改 `web/src/content/nuota.ts` 的 `AGENT_COUNT` 和 `agents`。
 2. 定价是否沿用：成长版 ¥29,800/年、发展型 MAX ¥58,000/年、连锁型 PLUS ¥98,000/年。
 3. 宣传语边界：`替代 5-8 名员工`、`98% 毛利率`、`95% 续约率`、`3× 业绩增长` 是否保留或软化。
 4. `nuotaai.cn` 当前无法访问，需要先恢复或暂时用 `tataasia.com/brand-nuota.html` 承接。
 5. 商标符号：未注册成功前建议不使用 `™/®`，页面先写“诺塔 / NUOTA”。
 
-## 提交建议
+## 远程仓库
 
-建议仓库分支：
-
-```text
-feat/nuota-brand-websites
-```
-
-提交信息：
+当前已配置远程仓库：
 
 ```text
-docs: add NUOTA dual-site content, IA, functions and replacement plan
+git@github.com:fushuogang-glitch/nuota-websites.git
 ```
 
-## 我还不能 push 的原因
+推送使用本地 Deploy Key：
 
-当前还没有远程仓库地址和推送权限。给我 Git remote 后，我可以把这个目录作为初始提交推上去。
+```text
+/Users/jiuyi/Documents/kimi/workspace/.ssh/kimi_nuota_deploy
+```
