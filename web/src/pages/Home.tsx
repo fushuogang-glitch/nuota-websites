@@ -217,6 +217,20 @@ export default function Home() {
 
         <section id="pricing" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
           <SectionHeading eyebrow="PRICING" title="透明定价，按月付费" desc="不含硬件设备，远程配置上线。连锁版按门店数计费，具体功能以实际开通版本为准。" />
+          <div className="mx-auto mt-8 max-w-4xl rounded-[1.75rem] border border-black/10 bg-white p-6 text-center shadow-[0_18px_50px_rgba(0,0,0,0.05)] md:p-8">
+            <p className="text-xl font-semibold tracking-tight text-black md:text-2xl">拥有诺塔，相当于把塔塔咨询的方法论装进系统</p>
+            <div className="mt-5 grid gap-3 text-sm md:grid-cols-2">
+              <div className="rounded-2xl border border-black/10 px-4 py-3">
+                <p className="text-black/50">塔塔咨询年度陪跑</p>
+                <p className="mt-1 text-lg font-semibold text-black">¥30万/年起</p>
+              </div>
+              <div className="rounded-2xl border border-black bg-black px-4 py-3 text-white">
+                <p className="text-white/60">诺塔智能体运营系统</p>
+                <p className="mt-1 text-lg font-semibold">¥2,999/月</p>
+              </div>
+            </div>
+            <p className="mt-5 text-sm leading-6 text-black/60">同一套方法论，用系统方式落地，让更多门店用得起专业标准。</p>
+          </div>
           <div className="mx-auto mt-10 grid max-w-4xl gap-4 lg:grid-cols-2">
             {pricingPlans.map((plan) => (
               <Card key={plan.name} className={plan.recommended ? `relative border-black ${cardClass}` : cardClass}>

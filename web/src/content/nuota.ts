@@ -105,6 +105,13 @@ export const otaSteps = [
   },
 ]
 
+export const pricingAnchor = {
+  title: '拥有诺塔，相当于把塔塔咨询的方法论装进系统',
+  consulting: '塔塔咨询年度陪跑价格：¥30万/年起。',
+  product: '诺塔智能体运营系统：¥2,999/月。',
+  desc: '同一套方法论，用系统方式落地，让更多门店用得起专业标准。',
+}
+
 export const pricingPlans = [
   {
     name: '单店版',
