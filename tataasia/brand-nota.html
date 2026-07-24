@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>诺塔 NUOTA — 让 AI Agent 主动推动团队执行 | 塔塔咨询旗下品牌</title>
+<meta name="description" content="诺塔智能体运营系统 NUOTA Agentic OS：不是 CRM，不是 ERP。9 个 AI Agent 数字员工主动跟进、预警、协同和复盘，让管理从人盯人变成系统推动人。首发美业版。">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #000; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* 顶部锁定黑条 */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #000; color: #fff;
+    font-size: 13px; letter-spacing: 0.05em;
+  }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; height: 40px; }
+  .topbar .contact { opacity: 0.75; }
+  .topbar .contact a { color: #fff; }
+
+  /* 导航 */
+  .nav {
+    position: fixed; top: 40px; left: 0; right: 0; z-index: 99;
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid #000;
+    backdrop-filter: blur(8px);
+  }
+  .nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+  .brand .logo {
+    width: 36px; height: 36px; background: #000; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; border-radius: 50%;
+  }
+  .brand small { display: block; font-size: 11px; font-weight: 400; letter-spacing: 0.15em; opacity: 0.6; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; }
+  .nav-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .btn {
+    display: inline-block; background: #000; color: #fff;
+    padding: 12px 28px; font-size: 14px; letter-spacing: 0.05em;
+    border: 1px solid #000; transition: all .2s;
+  }
+  .btn:hover { background: #fff; color: #000; }
+  .btn.ghost { background: #fff; color: #000; }
+  .btn.ghost:hover { background: #000; color: #fff; }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+
+  main { padding-top: 104px; }
+
+  /* Hero */
+  .hero { padding: 96px 0 80px; border-bottom: 1px solid #000; text-align: center; }
+  .eyebrow { font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 800; letter-spacing: 0.12em; line-height: 1.3; }
+  .hero .slogan { font-size: clamp(18px, 3vw, 26px); font-weight: 600; margin-top: 24px; }
+  .hero .en { font-size: 13px; letter-spacing: 0.2em; opacity: 0.5; margin-top: 10px; }
+  .hero .desc { max-width: 720px; margin: 32px auto 0; font-size: 16px; }
+  .hero .beauty { display: inline-block; margin-top: 28px; border: 1px solid #000; padding: 10px 24px; font-size: 14px; }
+  .hero .cta { margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .hero .note { margin-top: 40px; font-size: 12px; opacity: 0.5; letter-spacing: 0.05em; }
+  .back-link { display: inline-block; margin-bottom: 32px; font-size: 13px; opacity: 0.6; }
+  .back-link:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* 区块通用 */
+  section { padding: 88px 0; border-bottom: 1px solid #000; }
+  .sec-head { margin-bottom: 56px; }
+  .sec-head .label { font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; opacity: 0.55; }
+  .sec-head h2 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 800; line-height: 1.4; margin-top: 12px; }
+  .sec-head .sub { font-size: 13px; letter-spacing: 0.12em; opacity: 0.5; margin-top: 8px; }
+
+  /* OTA */
+  .ota-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #000; }
+  .ota-cell { padding: 40px 32px; border-right: 1px solid #000; }
+  .ota-cell:last-child { border-right: none; }
+  .ota-cell .letter { font-size: 44px; font-weight: 800; line-height: 1; }
+  .ota-cell h3 { font-size: 18px; margin: 16px 0 10px; }
+  .ota-cell p { font-size: 14px; }
+  .ota-flow { text-align: center; font-size: 15px; font-weight: 600; letter-spacing: 0.1em; margin-top: 32px; }
+  @media (max-width: 860px) { .ota-grid { grid-template-columns: 1fr; } .ota-cell { border-right: none; border-bottom: 1px solid #000; } .ota-cell:last-child { border-bottom: none; } }
+
+  /* 对比 */
+  .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #000; margin-top: 48px; }
+  .cmp-cell { padding: 32px; border-right: 1px solid #000; }
+  .cmp-cell:last-child { border-right: none; }
+  .cmp-cell.hl { background: #000; color: #fff; }
+  .cmp-cell h3 { font-size: 17px; margin-bottom: 10px; }
+  .cmp-cell p { font-size: 14px; }
+  @media (max-width: 860px) { .cmp-grid { grid-template-columns: 1fr; } .cmp-cell { border-right: none; border-bottom: 1px solid #000; } .cmp-cell:last-child { border-bottom: none; } }
+
+  /* 四作用 */
+  .val-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid #000; }
+  .val-cell { padding: 40px 32px; border-bottom: 1px solid #000; }
+  .val-cell:nth-child(odd) { border-right: 1px solid #000; }
+  .val-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .val-cell .num { font-size: 13px; letter-spacing: 0.2em; opacity: 0.5; }
+  .val-cell h3 { font-size: 19px; margin: 12px 0 10px; }
+  .val-cell p { font-size: 14px; }
+  @media (max-width: 860px) { .val-grid { grid-template-columns: 1fr; } .val-cell { border-right: none !important; border-bottom: 1px solid #000 !important; } .val-cell:last-child { border-bottom: none !important; } }
+
+  /* 五特点 */
+  .feat-list { border: 1px solid #000; }
+  .feat-row { display: grid; grid-template-columns: 90px 240px 1fr; align-items: baseline; padding: 28px 32px; border-bottom: 1px solid #000; }
+  .feat-row:last-child { border-bottom: none; }
+  .feat-row .no { font-size: 15px; font-weight: 700; letter-spacing: 0.15em; }
+  .feat-row h3 { font-size: 17px; }
+  .feat-row p { font-size: 14px; }
+  @media (max-width: 860px) { .feat-row { grid-template-columns: 60px 1fr; } .feat-row p { grid-column: 2; margin-top: 8px; } }
+
+  /* Agent 网格 */
+  .agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #000; }
+  .agent-cell { padding: 32px 28px; border-right: 1px solid #000; border-bottom: 1px solid #000; }
+  .agent-cell:nth-child(3n) { border-right: none; }
+  .agent-cell:nth-last-child(-n+3) { border-bottom: none; }
+  .agent-cell .code { font-size: 12px; letter-spacing: 0.2em; opacity: 0.5; }
+  .agent-cell h3 { font-size: 16px; margin: 10px 0 8px; }
+  .agent-cell p { font-size: 13px; }
+  @media (max-width: 860px) { .agent-grid { grid-template-columns: 1fr; } .agent-cell { border-right: none !important; border-bottom: 1px solid #000 !important; } .agent-cell:last-child { border-bottom: none !important; } }
+
+  /* 定价锚点 */
+  .anchor { border: 1px solid #000; padding: 48px 40px; text-align: center; margin-bottom: 56px; }
+  .anchor h3 { font-size: clamp(19px, 3vw, 24px); font-weight: 700; }
+  .anchor .vs { display: flex; justify-content: center; gap: 48px; margin-top: 32px; flex-wrap: wrap; }
+  .anchor .vs .item .p { font-size: 30px; font-weight: 800; margin-top: 8px; }
+  .anchor .vs .item .p small { font-size: 15px; font-weight: 400; }
+  .anchor .vs .item.dark { background: #000; color: #fff; padding: 24px 36px; }
+  .anchor .vs .item.light { border: 1px solid #000; padding: 24px 36px; }
+  .anchor .foot { margin-top: 28px; font-size: 14px; }
+  .plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .plan { border: 1px solid #000; padding: 44px 36px; position: relative; }
+  .plan.rec { background: #000; color: #fff; }
+  .plan .tag { position: absolute; top: -13px; left: 36px; background: #000; color: #fff; font-size: 12px; padding: 4px 14px; letter-spacing: 0.15em; }
+  .plan.rec .tag { background: #fff; color: #000; }
+  .plan h3 { font-size: 20px; }
+  .plan .price { font-size: 38px; font-weight: 800; margin: 18px 0 4px; }
+  .plan .price small { font-size: 15px; font-weight: 400; }
+  .plan .monthly { font-size: 13px; opacity: 0.65; }
+  .plan ul { list-style: none; margin: 28px 0 32px; }
+  .plan li { font-size: 14px; padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.12); }
+  .plan.rec li { border-bottom-color: rgba(255,255,255,0.2); }
+  .plan li::before { content: "—"; margin-right: 10px; }
+  .plan .btn { width: 100%; text-align: center; }
+  .plan.rec .btn { background: #fff; color: #000; border-color: #fff; }
+  .plan.rec .btn:hover { background: #000; color: #fff; }
+  @media (max-width: 860px) { .plan-grid { grid-template-columns: 1fr; } }
+
+  /* 客户绿点 */
+  .client-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #000; }
+  .client-cell { padding: 22px 20px; border-right: 1px solid #000; border-bottom: 1px solid #000; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+  .client-cell:nth-child(4n) { border-right: none; }
+  .client-cell:nth-last-child(-n+4) { border-bottom: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; flex-shrink: 0; animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(22,163,74,0.4); } 50% { opacity: 0.35; box-shadow: 0 0 0 5px rgba(22,163,74,0.12); } }
+  .clients-more { margin-top: 24px; font-size: 14px; opacity: 0.6; }
+  .clients-note { margin-top: 8px; font-size: 12px; opacity: 0.45; }
+  @media (max-width: 860px) { .client-grid { grid-template-columns: 1fr 1fr; } .client-cell { border-right: none !important; border-bottom: 1px solid #000 !important; } .client-cell:nth-child(odd) { border-right: 1px solid #000 !important; } .client-cell:nth-last-child(-n+2) { border-bottom: none !important; } }
+
+  /* 案例 */
+  .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #000; }
+  .case-cell { padding: 36px 30px; border-right: 1px solid #000; }
+  .case-cell:last-child { border-right: none; }
+  .case-cell .city { font-size: 12px; letter-spacing: 0.25em; opacity: 0.5; }
+  .case-cell h3 { font-size: 18px; margin: 10px 0 12px; }
+  .case-cell p { font-size: 13px; }
+  .case-cell .ctag { display: inline-block; margin-top: 18px; font-size: 12px; border-top: 1px solid #000; padding-top: 10px; }
+  @media (max-width: 860px) { .case-grid { grid-template-columns: 1fr; } .case-cell { border-right: none; border-bottom: 1px solid #000; } .case-cell:last-child { border-bottom: none; } }
+
+  /* 底部 CTA */
+  .final-cta { text-align: center; padding: 96px 0; border-bottom: 1px solid #000; }
+  .final-cta h2 { font-size: clamp(26px, 4.5vw, 42px); font-weight: 800; line-height: 1.5; }
+  .final-cta .sub { font-size: 13px; letter-spacing: 0.15em; opacity: 0.5; margin-top: 12px; }
+  .final-cta .cta-row { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* 页脚 */
+  footer { padding: 72px 0 40px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; }
+  .foot-grid h4 { font-size: 14px; margin-bottom: 16px; letter-spacing: 0.1em; }
+  .foot-grid p, .foot-grid a { font-size: 13px; opacity: 0.7; display: block; margin-bottom: 8px; }
+  .foot-grid a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+  .foot-brand { font-weight: 700; font-size: 16px; opacity: 1 !important; }
+  .foot-tag { font-size: 13px; opacity: 0.7; margin-top: 10px; }
+  .capsules { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .capsule { border: 1px solid #000; font-size: 12px; padding: 5px 14px; }
+  .model-note { font-size: 11px !important; opacity: 0.45 !important; margin-top: 12px; }
+  .copyright { margin-top: 56px; padding-top: 24px; border-top: 1px solid #000; font-size: 12px; opacity: 0.55; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr; gap: 32px; } }
+</style>
+</head>
+<body>
+
+<!-- 顶部锁定黑条 -->
+<div class="topbar">
+  <div class="wrap">
+    <span>用诺塔 NUOTA Agentic OS · 让中国美业运营智能起来</span>
+    <span class="contact"><a href="mailto:fuxirui@tatazixun.com">fuxirui@tatazixun.com</a>　<a href="tel:17279676768">17279676768</a></span>
+  </div>
+</div>
+
+<!-- 导航 -->
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo">N</span>
+      <span>诺塔 NUOTA<small>NUOTA AGENTIC OS</small></span>
+    </div>
+    <div class="nav-links">
+      <a href="#value">产品作用</a>
+      <a href="#features">产品特点</a>
+      <a href="#agents">Agent 矩阵</a>
+      <a href="#pricing">定价</a>
+      <a href="#clients">客户</a>
+      <a href="#cases">案例</a>
+    </div>
+    <a class="btn" href="https://www.nuotaai.com" target="_blank" rel="noopener">预约演示</a>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap">
+      <a class="back-link" href="https://www.tataasia.com/">← 返回塔塔咨询集团首页</a>
+      <p class="eyebrow">NUOTA Agentic OS</p>
+      <h1>诺塔智能体运营系统</h1>
+      <p class="slogan">让 AI Agent 主动推动团队执行</p>
+      <p class="en">Agentic Operating System · Drive Team Execution</p>
+      <p class="desc">不是 CRM，不是 ERP。诺塔把企业经营目标拆解成任务，嵌入业务流程，通过 AI Agent 主动跟进、预警、协同和复盘，让管理从"人盯人"变成"系统推动人"。</p>
+      <p class="beauty">首发美业版：服务美业门店、连锁品牌与经营团队</p>
+      <div class="cta">
+        <a class="btn" href="https://www.nuotaai.com" target="_blank" rel="noopener">预约演示</a>
+        <a class="btn ghost" href="#pricing">查看定价</a>
+      </div>
+      <p class="note">NUOTA = Networked Unified Operations &amp; Team Agents · OTA 执行模型：Objective → Task → Agent</p>
+    </div>
+  </header>
+
+  <!-- OTA 执行模型 -->
+  <section id="ota">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">OTA 执行模型</p>
+        <h2>Objective → Task → Agent</h2>
+        <p class="sub">Execution Framework</p>
+      </div>
+      <div class="ota-grid">
+        <div class="ota-cell">
+          <p class="letter">O</p>
+          <h3>Objective 目标</h3>
+          <p>把增长、运营、服务目标录入系统，形成可追踪目标。</p>
+        </div>
+        <div class="ota-cell">
+          <p class="letter">T</p>
+          <h3>Task 任务</h3>
+          <p>系统自动拆解成日/周/月任务，分配到人和场景。</p>
+        </div>
+        <div class="ota-cell">
+          <p class="letter">A</p>
+          <h3>Agent 执行</h3>
+          <p>AI Agent 主动提醒、协同、催办、反馈和复盘。</p>
+        </div>
+      </div>
+      <p class="ota-flow">让目标进系统、任务有人盯、执行被推动、结果可追踪。</p>
+      <div class="cmp-grid">
+        <div class="cmp-cell">
+          <h3>CRM</h3>
+          <p>记录客户关系，但不一定推动执行。</p>
+        </div>
+        <div class="cmp-cell">
+          <h3>ERP</h3>
+          <p>管理资源流程，但不一定主动协同。</p>
+        </div>
+        <div class="cmp-cell hl">
+          <h3>诺塔 NUOTA</h3>
+          <p>把目标变成任务，让 AI Agent 主动推动团队完成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品作用 -->
+  <section id="value">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Value · 诺塔的作用</p>
+        <h2>让目标真正落到每天的动作里</h2>
+        <p class="sub">How NUOTA Turns Goals into Daily Action</p>
+      </div>
+      <div class="val-grid">
+        <div class="val-cell">
+          <p class="num">01</p>
+          <h3>把目标变成执行</h3>
+          <p>把经营目标转化为任务流，让团队知道今天该做什么、谁来做、做到什么程度。</p>
+        </div>
+        <div class="val-cell">
+          <p class="num">02</p>
+          <h3>让系统主动推动人</h3>
+          <p>AI Agent 主动识别进度、提醒风险、推动协作，而不是等管理者发现问题后再补救。</p>
+        </div>
+        <div class="val-cell">
+          <p class="num">03</p>
+          <h3>把管理从经验变成闭环</h3>
+          <p>目标、任务、执行、反馈、复盘连成闭环，沉淀可复制的系统能力。</p>
+        </div>
+        <div class="val-cell">
+          <p class="num">04</p>
+          <h3>让团队执行更稳定</h3>
+          <p>减少漏跟、漏办、拖延和信息断层，让执行动作更标准、更连续、更可追踪。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品特点 -->
+  <section id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Features · 为什么诺塔</p>
+        <h2>不是普通管理工具</h2>
+        <p class="sub">Why NUOTA is Different</p>
+      </div>
+      <div class="feat-list">
+        <div class="feat-row">
+          <span class="no">01</span>
+          <h3>智能体运营系统</h3>
+          <p>诺塔服务的不只是"管理数据"，而是"推动执行"。</p>
+        </div>
+        <div class="feat-row">
+          <span class="no">02</span>
+          <h3>AI Agent 协同工作</h3>
+          <p>多个 Agent 围绕目标拆解、任务分配、过程跟进、结果反馈和经营复盘协同工作。</p>
+        </div>
+        <div class="feat-row">
+          <span class="no">03</span>
+          <h3>OTA 执行模型</h3>
+          <p>Objective → Task → Agent，把经营目标翻译成每天可执行、可检查、可复盘的行动。</p>
+        </div>
+        <div class="feat-row">
+          <span class="no">04</span>
+          <h3>主动式管理</h3>
+          <p>AI Agent 主动推动任务前进，主动暴露风险，主动提醒关键动作。</p>
+        </div>
+        <div class="feat-row">
+          <span class="no">05</span>
+          <h3>美业原生设计</h3>
+          <p>品项、会员、到店、回访等美业经营场景原生内置，不是通用管理软件的改装版。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agent 矩阵 -->
+  <section id="agents">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Agents · 9 个 AI Agent 数字员工</p>
+        <h2>各司其职，全天候运转</h2>
+        <p class="sub">9 Digital Employees · Always On</p>
+      </div>
+      <div class="agent-grid">
+        <div class="agent-cell"><p class="code">A-01</p><h3>数据信息 Agent</h3><p>每日自动汇总经营数据，生成结构化日报，异常智能预警。</p></div>
+        <div class="agent-cell"><p class="code">A-02</p><h3>品牌内容 Agent</h3><p>规划内容方向，追踪互动表现，给出选题与发布建议。</p></div>
+        <div class="agent-cell"><p class="code">A-03</p><h3>引流增长 Agent</h3><p>分析投放与引流效果，预警异常成本，推荐调整方案。</p></div>
+        <div class="agent-cell"><p class="code">A-04</p><h3>会员管理 Agent</h3><p>客户分级管理，到店频次预警，自动触发邀约与跟进。</p></div>
+        <div class="agent-cell"><p class="code">A-05</p><h3>流程检查 Agent</h3><p>每日巡检 SOP 执行情况，偏差立即预警，标准不打折。</p></div>
+        <div class="agent-cell"><p class="code">A-06</p><h3>财务经营 Agent</h3><p>收支记录、报表生成、预算监控、税务与风险提醒。</p></div>
+        <div class="agent-cell"><p class="code">A-07</p><h3>人力组织 Agent</h3><p>员工管理、绩效追踪、异常预警、组织健康监控。</p></div>
+        <div class="agent-cell"><p class="code">A-08</p><h3>客户服务 Agent</h3><p>平台私信自动回复，差评实时预警，话术建议。</p></div>
+        <div class="agent-cell"><p class="code">A-09</p><h3>智总 Agent</h3><p>统筹其他 Agent，负责异常升级、执行调度和跨模块协同。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 定价 -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Pricing · 透明定价</p>
+        <h2>无隐藏费用</h2>
+        <p class="sub">Simple, Transparent Pricing</p>
+      </div>
+      <div class="anchor">
+        <h3>拥有诺塔，相当于把塔塔咨询的方法论装进系统</h3>
+        <div class="vs">
+          <div class="item light">
+            <p>塔塔咨询年度陪跑</p>
+            <p class="p">¥30万<small> /年起</small></p>
+          </div>
+          <div class="item dark">
+            <p>诺塔智能体运营系统</p>
+            <p class="p">¥2,999<small> /月</small></p>
+          </div>
+        </div>
+        <p class="foot">同一套方法论，用系统方式落地，让更多门店用得起专业标准。</p>
+      </div>
+      <div class="plan-grid">
+        <div class="plan rec">
+          <span class="tag">推荐</span>
+          <h3>单店版</h3>
+          <p class="price">¥2,999<small> /月</small></p>
+          <p class="monthly">按月付费</p>
+          <ul>
+            <li>9 个 AI Agent</li>
+            <li>单店部署</li>
+            <li>基础数据看板</li>
+            <li>远程配置上线</li>
+            <li>在线客服支持</li>
+          </ul>
+          <a class="btn" href="https://www.nuotaai.com" target="_blank" rel="noopener">预约演示</a>
+        </div>
+        <div class="plan">
+          <h3>连锁版</h3>
+          <p class="price">首店 ¥2,999<small> /月</small></p>
+          <p class="monthly">第 2 店起每店 ¥1,500/月</p>
+          <ul>
+            <li>9 个 AI Agent</li>
+            <li>多店统一管理</li>
+            <li>跨店数据汇总</li>
+            <li>连锁经营看板</li>
+            <li>专属客户成功经理</li>
+            <li>月度策略陪跑</li>
+          </ul>
+          <a class="btn ghost" href="https://www.nuotaai.com" target="_blank" rel="noopener">咨询连锁方案</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 客户 -->
+  <section id="clients">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Clients</p>
+        <h2>塔塔咨询客户 · 诺塔系统接入门店</h2>
+      </div>
+      <div class="client-grid">
+        <div class="client-cell"><span class="dot"></span>宁波 AIMEILI</div>
+        <div class="client-cell"><span class="dot"></span>北京科林研肌</div>
+        <div class="client-cell"><span class="dot"></span>盐城木子美学</div>
+        <div class="client-cell"><span class="dot"></span>武汉壹贰壹</div>
+        <div class="client-cell"><span class="dot"></span>嘉兴妍肌嘉</div>
+        <div class="client-cell"><span class="dot"></span>台州 Q Skin</div>
+        <div class="client-cell"><span class="dot"></span>台州觅尚</div>
+        <div class="client-cell"><span class="dot"></span>长沙 Q+新颜</div>
+        <div class="client-cell"><span class="dot"></span>扬州三只熊</div>
+        <div class="client-cell"><span class="dot"></span>泰州雨非</div>
+        <div class="client-cell"><span class="dot"></span>深圳青鸾美学</div>
+        <div class="client-cell"><span class="dot"></span>忻州雅图安</div>
+      </div>
+      <p class="clients-more">…… 更多门店持续接入中</p>
+      <p class="clients-note">以上品牌为塔塔咨询服务/系统接入客户，展示以客户授权为准。</p>
+    </div>
+  </section>
+
+  <!-- 案例 -->
+  <section id="cases">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cases · 从咨询方法论</p>
+        <h2>到系统执行</h2>
+        <p class="sub">From Methodology to Execution · 诺塔由嘉塔诺塔推出，承接塔塔咨询在新美业十余年的经营方法论</p>
+      </div>
+      <div class="case-grid">
+        <div class="case-cell">
+          <p class="city">武汉</p>
+          <h3>武汉一二一连锁</h3>
+          <p>5 家连锁门店，引入诺塔智能体运营系统，实现门店数据实时汇总、客户智能管理、销售自动触发。</p>
+          <span class="ctag">→ 诺塔 NUOTA 种子客户</span>
+        </div>
+        <div class="case-cell">
+          <p class="city">长沙</p>
+          <h3>长沙 Q+新颜</h3>
+          <p>2 家门店，完成塔塔三多法则系统搭建，客户分级管理体系落地，门店自运转能力显著提升。</p>
+          <span class="ctag">→ 诺塔 NUOTA 种子客户</span>
+        </div>
+        <div class="case-cell">
+          <p class="city">扬中</p>
+          <h3>青檀美容</h3>
+          <p>三线城市门店，通过塔塔方法论重建品项结构与客户分级体系，摆脱低价竞争陷阱。</p>
+          <span class="ctag">→ 战略咨询 · 系统重建</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 CTA -->
+  <div class="final-cta">
+    <div class="wrap">
+      <h2>准备好让 AI Agent<br>主动推动你的团队执行？</h2>
+      <p class="sub">Ready to Drive Execution with AI Agents</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.nuotaai.com" target="_blank" rel="noopener">预约演示</a>
+        <a class="btn ghost" href="mailto:fuxirui@tatazixun.com">联系顾问</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">诺塔 NUOTA</p>
+          <p class="foot-tag">美业深度专家：从 C 端到供应链全量深度了解，协同配套系统。</p>
+          <p style="margin-top:16px;">NUOTA = Networked Unified Operations &amp; Team Agents</p>
+          <p>嘉塔诺塔旗下品牌</p>
+        </div>
+        <div>
+          <h4>导航</h4>
+          <a href="#value">产品作用</a>
+          <a href="#features">产品特点</a>
+          <a href="#agents">Agent 矩阵</a>
+          <a href="#pricing">定价</a>
+          <a href="#cases">案例</a>
+        </div>
+        <div>
+          <h4>集团品牌</h4>
+          <a href="https://www.tataasia.com/" target="_blank" rel="noopener">塔塔咨询</a>
+          <a href="https://www.nuotaai.com" target="_blank" rel="noopener">诺塔智能系统</a>
+          <span style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px;">九木营销学院</span>
+          <span style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px;">九凤产品学院</span>
+        </div>
+        <div>
+          <h4>AI 模型合作</h4>
+          <div class="capsules">
+            <span class="capsule">Kimi</span>
+            <span class="capsule">MiniMax</span>
+            <span class="capsule">DeepSeek</span>
+            <span class="capsule">通义千问</span>
+            <span class="capsule">等国内厂商品牌</span>
+          </div>
+          <p class="model-note">文字展示，正式启用品牌 Logo 前请确认授权与官方素材。</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 上海嘉塔诺塔企业管理咨询有限公司</span>
+        <span>官方邮箱 fuxirui@tatazixun.com　联系电话 17279676768</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
