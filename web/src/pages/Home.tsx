@@ -20,8 +20,10 @@ import {
 } from '@/content/nuota'
 
 const icons = [Target, ListChecks, Bot, RefreshCw]
-const cardClass = 'border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.05)]'
-const primaryButton = 'rounded-full bg-[#31546d] text-white hover:bg-[#27485e]'
+const cardClass = 'border-black/10 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.05)]'
+const primaryButton = 'rounded-full bg-black text-white hover:bg-black/85'
+const outlineButton = 'rounded-full border-black/20 bg-white text-black hover:border-black'
+const mutedText = 'text-black/60'
 
 function SectionHeading({
   eyebrow,
@@ -34,30 +36,30 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <Badge variant="secondary" className="mb-4 rounded-full border border-slate-200 bg-slate-50 px-4 py-1 text-xs font-medium tracking-[0.22em] text-[#31546d]">
+      <Badge variant="outline" className="mb-4 rounded-full border-black/20 bg-white px-4 py-1 text-xs font-medium tracking-[0.24em] text-black">
         {eyebrow}
       </Badge>
-      <h2 className="text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">{title}</h2>
-      {desc ? <p className="mt-4 text-base leading-7 text-slate-600">{desc}</p> : null}
+      <h2 className="text-3xl font-semibold tracking-tight text-black md:text-4xl">{title}</h2>
+      {desc ? <p className={`mt-4 text-base leading-7 ${mutedText}`}>{desc}</p> : null}
     </div>
   )
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <div className="min-h-screen bg-white text-black">
+      <header className="sticky top-0 z-40 border-b border-black/10 bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
           <a href="#top" className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#31546d] text-sm font-bold text-white">N</span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-sm font-bold text-white">N</span>
             <span className="leading-tight">
-              <span className="block text-sm font-semibold text-slate-950">诺塔</span>
-              <span className="block text-xs font-medium tracking-[0.28em] text-slate-500">NUOTA</span>
+              <span className="block text-sm font-semibold text-black">诺塔</span>
+              <span className="block text-xs font-medium tracking-[0.3em] text-black/50">NUOTA</span>
             </span>
           </a>
-          <nav className="hidden items-center gap-7 text-sm text-slate-600 lg:flex">
+          <nav className="hidden items-center gap-7 text-sm text-black/60 lg:flex">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="transition hover:text-[#31546d]">
+              <a key={item.href} href={item.href} className="transition hover:text-black">
                 {item.label}
               </a>
             ))}
@@ -69,19 +71,18 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(49,84,109,0.10),transparent_34%),radial-gradient(circle_at_left,rgba(201,169,106,0.14),transparent_28%)]" />
+        <section className="relative overflow-hidden border-b border-black/10">
           <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-24 pt-16 md:px-8 md:pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
-              <Badge className="rounded-full bg-[#31546d] px-4 py-1 text-xs font-medium tracking-[0.24em] text-white hover:bg-[#31546d]">
+              <Badge className="rounded-full bg-black px-4 py-1 text-xs font-medium tracking-[0.24em] text-white hover:bg-black">
                 {hero.eyebrow}
               </Badge>
-              <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-slate-950 md:text-7xl">
+              <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-black md:text-7xl">
                 {hero.title}
               </h1>
-              <p className="mt-6 text-2xl font-medium tracking-tight text-[#31546d] md:text-3xl">{hero.slogan}</p>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">{hero.description}</p>
-              <p className="mt-4 text-sm font-medium text-[#7a6a53]">{hero.beauty}</p>
+              <p className="mt-6 text-2xl font-medium tracking-tight text-black md:text-3xl">{hero.slogan}</p>
+              <p className={`mt-6 max-w-2xl text-base leading-8 md:text-lg ${mutedText}`}>{hero.description}</p>
+              <p className="mt-4 text-sm font-medium text-black">{hero.beauty}</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className={`${primaryButton} px-8`}>
                   <a href="#demo">
@@ -89,34 +90,34 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full border-slate-300 bg-white px-8 text-slate-700 hover:bg-slate-50">
+                <Button asChild size="lg" variant="outline" className={`${outlineButton} px-8`}>
                   <a href="#pricing">{hero.secondaryCta}</a>
                 </Button>
               </div>
-              <p className="mt-6 text-xs leading-6 text-slate-500">{hero.note}</p>
+              <p className="mt-6 text-xs leading-6 text-black/50">{hero.note}</p>
             </div>
 
             <Card className={`${cardClass} rounded-[1.75rem]`}>
               <CardHeader>
-                <CardTitle className="flex items-center justify-between text-base">
+                <CardTitle className="flex items-center justify-between text-base text-black">
                   <span>OTA 执行模型</span>
-                  <Badge variant="outline" className="border-slate-300 text-slate-600">Objective → Task → Agent</Badge>
+                  <Badge variant="outline" className="border-black/20 text-black/60">Objective → Task → Agent</Badge>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {otaSteps.map((step, index) => (
-                  <div key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div key={step.title} className="rounded-2xl border border-black/10 bg-white p-4">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#31546d] text-xs font-semibold text-white">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-semibold text-white">
                         {index + 1}
                       </span>
-                      <p className="font-medium text-slate-950">{step.title}</p>
+                      <p className="font-medium text-black">{step.title}</p>
                     </div>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">{step.desc}</p>
+                    <p className={`mt-3 text-sm leading-6 ${mutedText}`}>{step.desc}</p>
                   </div>
                 ))}
-                <Separator className="bg-slate-200" />
-                <p className="text-sm leading-6 text-slate-600">让目标进系统、任务有人盯、执行被推动、结果可追踪。</p>
+                <Separator className="bg-black/10" />
+                <p className={`text-sm leading-6 ${mutedText}`}>让目标进系统、任务有人盯、执行被推动、结果可追踪。</p>
               </CardContent>
             </Card>
           </div>
@@ -132,9 +133,9 @@ export default function Home() {
             {comparisons.map((item) => (
               <Card key={item.title} className={cardClass}>
                 <CardHeader>
-                  <CardTitle className="text-slate-950">{item.title}</CardTitle>
+                  <CardTitle className="text-black">{item.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+                <CardContent className={`text-sm leading-6 ${mutedText}`}>{item.desc}</CardContent>
               </Card>
             ))}
           </div>
@@ -148,29 +149,29 @@ export default function Home() {
               return (
                 <Card key={item.title} className={cardClass}>
                   <CardHeader>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#31546d] text-white">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black text-white">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <CardTitle className="pt-4 text-lg text-slate-950">{item.title}</CardTitle>
+                    <CardTitle className="pt-4 text-lg text-black">{item.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+                  <CardContent className={`text-sm leading-6 ${mutedText}`}>{item.desc}</CardContent>
                 </Card>
               )
             })}
           </div>
         </section>
 
-        <section id="features" className="border-y border-slate-200 bg-slate-50">
+        <section id="features" className="border-y border-black/10 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
             <SectionHeading eyebrow="FEATURES" title="为什么诺塔不是普通管理工具" />
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
               {features.map((item, index) => (
-                <Card key={item.title} className="border-slate-200 bg-white">
+                <Card key={item.title} className="border-black/10 bg-white">
                   <CardHeader>
-                    <Badge variant="outline" className="w-fit border-slate-300 text-slate-500">0{index + 1}</Badge>
-                    <CardTitle className="text-base text-slate-950">{item.title}</CardTitle>
+                    <Badge variant="outline" className="w-fit border-black/20 text-black/50">0{index + 1}</Badge>
+                    <CardTitle className="text-base text-black">{item.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-sm leading-6 text-slate-600">{item.desc}</CardContent>
+                  <CardContent className={`text-sm leading-6 ${mutedText}`}>{item.desc}</CardContent>
                 </Card>
               ))}
             </div>
@@ -187,27 +188,27 @@ export default function Home() {
             {agents.map((agent) => (
               <Card key={agent.code} className={cardClass}>
                 <CardHeader className="flex-row items-center justify-between space-y-0">
-                  <CardTitle className="text-base text-slate-950">{agent.name}</CardTitle>
-                  <Badge variant="secondary" className="bg-slate-100 text-[#31546d]">{agent.code}</Badge>
+                  <CardTitle className="text-base text-black">{agent.name}</CardTitle>
+                  <Badge className="bg-black text-white hover:bg-black">{agent.code}</Badge>
                 </CardHeader>
-                <CardContent className="text-sm leading-6 text-slate-600">{agent.desc}</CardContent>
+                <CardContent className={`text-sm leading-6 ${mutedText}`}>{agent.desc}</CardContent>
               </Card>
             ))}
           </div>
         </section>
 
         <section id="beauty" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
-          <div className="rounded-[2rem] border border-[#d7e4ec] bg-[#f3f8fb] px-6 py-12 text-slate-900 md:px-12">
-            <Badge className="bg-white text-[#31546d] hover:bg-white">BEAUTY EDITION</Badge>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">诺塔智能体运营系统 · 美业版</h2>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 md:text-base">
+          <div className="rounded-[2rem] bg-black px-6 py-12 text-white md:px-12">
+            <Badge className="bg-white text-black hover:bg-white">BEAUTY EDITION</Badge>
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-4xl">诺塔智能体运营系统 · 美业版</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
               面向美业门店、连锁品牌与经营团队的 AI Agent 智能体运营系统。把塔塔咨询方法论沉淀进系统，覆盖数据、内容、引流、会员、流程、财务、人力、客服与经营复盘。
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className={primaryButton}>
+              <Button asChild className="rounded-full bg-white text-black hover:bg-white/90">
                 <a href="#demo">预约美业版演示</a>
               </Button>
-              <Button asChild variant="outline" className="rounded-full border-[#bcd0dd] bg-white text-[#31546d] hover:bg-[#eaf2f7]">
+              <Button asChild variant="outline" className="rounded-full border-white/30 bg-transparent text-white hover:bg-white/10">
                 <a href="#pricing">查看美业版定价</a>
               </Button>
             </div>
@@ -218,26 +219,26 @@ export default function Home() {
           <SectionHeading eyebrow="PRICING" title="透明定价，按月付费" desc="不含硬件设备，远程配置上线。连锁版按门店数计费，具体功能以实际开通版本为准。" />
           <div className="mx-auto mt-10 grid max-w-4xl gap-4 lg:grid-cols-2">
             {pricingPlans.map((plan) => (
-              <Card key={plan.name} className={plan.recommended ? `relative border-[#31546d] ${cardClass}` : cardClass}>
-                {plan.recommended ? <Badge className="absolute -top-3 left-6 bg-[#31546d] text-white">推荐</Badge> : null}
+              <Card key={plan.name} className={plan.recommended ? `relative border-black ${cardClass}` : cardClass}>
+                {plan.recommended ? <Badge className="absolute -top-3 left-6 bg-black text-white">推荐</Badge> : null}
                 <CardHeader>
-                  <CardTitle className="text-slate-950">{plan.name}</CardTitle>
+                  <CardTitle className="text-black">{plan.name}</CardTitle>
                   <div className="pt-2">
-                    <span className="text-4xl font-semibold tracking-tight text-slate-950">{plan.price}</span>
-                    <span className="text-slate-500">{plan.unit}</span>
+                    <span className="text-4xl font-semibold tracking-tight text-black">{plan.price}</span>
+                    <span className="text-black/50">{plan.unit}</span>
                   </div>
-                  <p className="text-sm font-medium text-[#7a6a53]">{plan.monthly}</p>
+                  <p className="text-sm font-medium text-black">{plan.monthly}</p>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3 text-sm text-slate-600">
+                  <ul className={`space-y-3 text-sm ${mutedText}`}>
                     {plan.features.map((item) => (
                       <li key={item} className="flex gap-2">
-                        <Check className="mt-0.5 h-4 w-4 text-[#31546d]" />
+                        <Check className="mt-0.5 h-4 w-4 text-black" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button asChild className={`mt-6 w-full ${plan.recommended ? primaryButton : 'rounded-full border-slate-300 bg-white text-slate-700 hover:bg-slate-50'}`} variant={plan.recommended ? 'default' : 'outline'}>
+                  <Button asChild className={`mt-6 w-full ${plan.recommended ? primaryButton : outlineButton}`} variant={plan.recommended ? 'default' : 'outline'}>
                     <a href="#demo">{plan.cta}</a>
                   </Button>
                 </CardContent>
@@ -246,19 +247,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="cases" className="border-y border-slate-200 bg-slate-50">
+        <section id="cases" className="border-y border-black/10 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
             <SectionHeading eyebrow="CASES" title="从咨询方法论到系统执行" desc="诺塔由嘉塔诺塔推出，承接塔塔咨询在新美业十余年的经营方法论。" />
             <div className="mt-10 grid gap-4 lg:grid-cols-3">
               {cases.map((item) => (
-                <Card key={item.name} className="border-slate-200 bg-white">
+                <Card key={item.name} className="border-black/10 bg-white">
                   <CardHeader>
-                    <Badge variant="outline" className="w-fit border-slate-300 text-slate-500">{item.city}</Badge>
-                    <CardTitle className="text-lg text-slate-950">{item.name}</CardTitle>
+                    <Badge variant="outline" className="w-fit border-black/20 text-black/50">{item.city}</Badge>
+                    <CardTitle className="text-lg text-black">{item.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm leading-6 text-slate-600">{item.desc}</p>
-                    <p className="mt-4 text-xs font-medium text-[#7a6a53]">→ {item.tag}</p>
+                    <p className={`text-sm leading-6 ${mutedText}`}>{item.desc}</p>
+                    <p className="mt-4 text-xs font-medium text-black">→ {item.tag}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -272,9 +273,9 @@ export default function Home() {
             {faqs.map((item) => (
               <Card key={item.q} className={cardClass}>
                 <CardHeader>
-                  <CardTitle className="text-base text-slate-950">{item.q}</CardTitle>
+                  <CardTitle className="text-base text-black">{item.q}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm leading-6 text-slate-600">{item.a}</CardContent>
+                <CardContent className={`text-sm leading-6 ${mutedText}`}>{item.a}</CardContent>
               </Card>
             ))}
           </div>
@@ -283,36 +284,36 @@ export default function Home() {
         <section id="demo" className="mx-auto max-w-7xl px-4 pb-24 md:px-8">
           <div className={`grid gap-8 rounded-[2rem] p-6 md:p-10 lg:grid-cols-[0.9fr_1.1fr] ${cardClass}`}>
             <div>
-              <Badge variant="secondary" className="rounded-full bg-slate-100 text-[#31546d]">DEMO</Badge>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950">预约演示，看看 AI Agent 怎么推动团队执行</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-600">
+              <Badge className="rounded-full bg-black text-white hover:bg-black">DEMO</Badge>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-black">预约演示，看看 AI Agent 怎么推动团队执行</h2>
+              <p className={`mt-4 text-sm leading-7 ${mutedText}`}>
                 提交后顾问将在 1 个工作日内联系你。当前表单为前端 UI，接 CRM / 企业微信 webhook 后即可上线。
               </p>
             </div>
             <form className="grid gap-4">
               <div className="grid gap-4 md:grid-cols-2">
-                <Input placeholder="姓名" className="border-slate-300 bg-white" />
-                <Input placeholder="手机号" className="border-slate-300 bg-white" />
+                <Input placeholder="姓名" className="border-black/20 bg-white" />
+                <Input placeholder="手机号" className="border-black/20 bg-white" />
               </div>
               <div className="grid gap-4 md:grid-cols-2">
-                <Input placeholder="门店数量：单店 / 2-5 家 / 6-20 家 / 20+ 家" className="border-slate-300 bg-white" />
-                <Input placeholder="所在城市" className="border-slate-300 bg-white" />
+                <Input placeholder="门店数量：单店 / 2-5 家 / 6-20 家 / 20+ 家" className="border-black/20 bg-white" />
+                <Input placeholder="所在城市" className="border-black/20 bg-white" />
               </div>
-              <Input placeholder="当前最头疼的问题：目标不落 / 员工执行 / 会员复购 / 引流成本 / 数据不清" className="border-slate-300 bg-white" />
-              <Textarea placeholder="备注：想重点看哪个 Agent 或哪个场景？" rows={4} className="border-slate-300 bg-white" />
+              <Input placeholder="当前最头疼的问题：目标不落 / 员工执行 / 会员复购 / 引流成本 / 数据不清" className="border-black/20 bg-white" />
+              <Textarea placeholder="备注：想重点看哪个 Agent 或哪个场景？" rows={4} className="border-black/20 bg-white" />
               <Button className={primaryButton}>提交预约</Button>
             </form>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white py-10 text-slate-600">
+      <footer className="bg-black py-10 text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 md:flex-row md:items-center md:justify-between md:px-8">
           <div>
-            <p className="font-semibold text-slate-950">诺塔 NUOTA</p>
-            <p className="mt-1 text-sm">诺塔智能体运营系统 NUOTA Agentic OS</p>
+            <p className="font-semibold text-white">诺塔 NUOTA</p>
+            <p className="mt-1 text-sm text-white/70">诺塔智能体运营系统 NUOTA Agentic OS</p>
           </div>
-          <div className="text-sm">
+          <div className="text-sm text-white/60">
             <p>© 嘉塔诺塔</p>
             <p className="mt-1">ICP备案号 / 联系方式 / 隐私政策 / 用户协议：待补充</p>
           </div>
