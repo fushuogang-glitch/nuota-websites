@@ -1,0 +1,55 @@
+{
+  "official": {
+    "navy": "#10173F",
+    "black": "#000000",
+    "teal": "#5BB2A9",
+    "white": "#FFFFFF",
+    "gradients": [
+      {
+        "root": "#114468",
+        "tip": "#EF6837",
+        "name": "橙蓝"
+      },
+      {
+        "root": "#091142",
+        "tip": "#7925B0",
+        "name": "紫靛"
+      },
+      {
+        "root": "#005F66",
+        "tip": "#C8447D",
+        "name": "玫青"
+      },
+      {
+        "root": "#0E3457",
+        "tip": "#CCA819",
+        "name": "金蓝"
+      },
+      {
+        "root": "#051F22",
+        "tip": "#C1402A",
+        "name": "红青"
+      },
+      {
+        "root": "#111D68",
+        "tip": "#EC6476",
+        "name": "珊蓝"
+      }
+    ]
+  },
+  "proposed_application": {
+    "ui_surface": "#EEF1F5",
+    "light_ratio": "white70/navy20/teal10",
+    "dark_ratio": "navy70/white20/teal10"
+  },
+  "contrast": {
+    "white_navy": 17.264532506420238,
+    "navy_teal": 6.8942225243436175,
+    "white_teal": 2.5042029678413886
+  },
+  "notes": [
+    "Gradients are in original sequence.",
+    "OTA badge remains black on white in standard lockup.",
+    "Contrast follows WCAG relative luminance formula."
+  ]
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs><linearGradient id="g0" gradientUnits="userSpaceOnUse" x1="327.2" y1="255.6" x2="493.1" y2="254.7"><stop offset="0" stop-color="#114468"/><stop offset="1" stop-color="#EF6837"/></linearGradient>
+<linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="324.9" y1="279.8" x2="432.6" y2="316.8"><stop offset="0" stop-color="#091142"/><stop offset="1" stop-color="#7925B0"/></linearGradient>
+<linearGradient id="g2" gradientUnits="userSpaceOnUse" x1="314.6" y1="300.3" x2="438.6" y2="394.1"><stop offset="0" stop-color="#005F66"/><stop offset="1" stop-color="#C8447D"/></linearGradient>
+<linearGradient id="g3" gradientUnits="userSpaceOnUse" x1="298.0" y1="320.0" x2="359.0" y2="412.9"><stop offset="0" stop-color="#0E3457"/><stop offset="1" stop-color="#CCA819"/></linearGradient>
+<linearGradient id="g4" gradientUnits="userSpaceOnUse" x1="274.8" y1="331.3" x2="313.1" y2="485.1"><stop offset="0" stop-color="#051F22"/><stop offset="1" stop-color="#C1402A"/></linearGradient>
+<linearGradient id="g5" gradientUnits="userSpaceOnUse" x1="249.2" y1="326.0" x2="236.8" y2="453.1"><stop offset="0" stop-color="#111D68"/><stop offset="1" stop-color="#EC6476"/></linearGradient>
+<linearGradient id="g6" gradientUnits="userSpaceOnUse" x1="228.2" y1="321.3" x2="165.0" y2="469.7"><stop offset="0" stop-color="#114468"/><stop offset="1" stop-color="#EF6837"/></linearGradient>
+<linearGradient id="g7" gradientUnits="userSpaceOnUse" x1="206.0" y1="311.4" x2="125.3" y2="400.7"><stop offset="0" stop-color="#091142"/><stop offset="1" stop-color="#7925B0"/></linearGradient>
+<linearGradient id="g8" gradientUnits="userSpaceOnUse" x1="193.9" y1="289.5" x2="54.6" y2="364.6"><stop offset="0" stop-color="#005F66"/><stop offset="1" stop-color="#C8447D"/></linearGradient>
+<linearGradient id="g9" gradientUnits="userSpaceOnUse" x1="183.5" y1="267.7" x2="68.0" y2="286.3"><stop offset="0" stop-color="#0E3457"/><stop offset="1" stop-color="#CCA819"/></linearGradient>
+<linearGradient id="g10" gradientUnits="userSpaceOnUse" x1="184.6" y1="244.2" x2="20.1" y2="217.0"><stop offset="0" stop-color="#051F22"/><stop offset="1" stop-color="#C1402A"/></linearGradient>
+<linearGradient id="g11" gradientUnits="userSpaceOnUse" x1="190.1" y1="221.0" x2="85.2" y2="165.3"><stop offset="0" stop-color="#111D68"/><stop offset="1" stop-color="#EC6476"/></linearGradient>
+<linearGradient id="g12" gradientUnits="userSpaceOnUse" x1="207.4" y1="202.5" x2="93.5" y2="77.0"><stop offset="0" stop-color="#114468"/><stop offset="1" stop-color="#EF6837"/></linearGradient>
+<linearGradient id="g13" gradientUnits="userSpaceOnUse" x1="225.3" y1="186.4" x2="180.0" y2="83.9"><stop offset="0" stop-color="#091142"/><stop offset="1" stop-color="#7925B0"/></linearGradient>
+<linearGradient id="g14" gradientUnits="userSpaceOnUse" x1="248.7" y1="181.0" x2="233.0" y2="18.4"><stop offset="0" stop-color="#005F66"/><stop offset="1" stop-color="#C8447D"/></linearGradient>
+<linearGradient id="g15" gradientUnits="userSpaceOnUse" x1="274.6" y1="185.9" x2="306.2" y2="66.8"><stop offset="0" stop-color="#0E3457"/><stop offset="1" stop-color="#CCA819"/></linearGradient>
+<linearGradient id="g16" gradientUnits="userSpaceOnUse" x1="296.4" y1="194.4" x2="387.6" y2="55.6"><stop offset="0" stop-color="#051F22"/><stop offset="1" stop-color="#C1402A"/></linearGradient>
+<linearGradient id="g17" gradientUnits="userSpaceOnUse" x1="315.4" y1="209.7" x2="403.4" y2="141.1"><stop offset="0" stop-color="#111D68"/><stop offset="1" stop-color="#EC6476"/></linearGradient>
+<linearGradient id="g18" gradientUnits="userSpaceOnUse" x1="329.8" y1="231.0" x2="482.9" y2="179.2"><stop offset="0" stop-color="#114468"/><stop offset="1" stop-color="#EF6837"/></linearGradient></defs>
+    <polygon points="332.6,273.0 321.8,238.2 487.7,237.4 498.5,272.1" fill="url(#g0)"/>
+  <polygon points="324.6,290.3 325.3,269.2 433.0,306.3 432.3,327.4" fill="url(#g1)"/>
+  <polygon points="308.3,317.5 320.9,283.2 444.9,377.0 432.4,411.3" fill="url(#g2)"/>
+  <polygon points="291.9,327.5 304.2,312.6 365.2,405.5 352.9,420.4" fill="url(#g3)"/>
+  <polygon points="258.3,341.2 291.2,321.4 329.5,475.2 296.6,495.0" fill="url(#g4)"/>
+  <polygon points="239.5,328.0 258.9,324.1 246.5,451.1 227.2,455.0" fill="url(#g5)"/>
+  <polygon points="207.9,319.1 248.5,323.4 185.3,471.9 144.6,467.6" fill="url(#g6)"/>
+  <polygon points="196.8,307.1 215.1,315.7 134.5,405.0 116.2,396.4" fill="url(#g7)"/>
+  <polygon points="180.7,276.4 207.2,302.6 67.8,377.7 41.3,351.5" fill="url(#g8)"/>
+  <polygon points="178.8,258.0 188.3,277.3 72.8,296.0 63.3,276.7" fill="url(#g9)"/>
+  <polygon points="181.9,224.3 187.2,264.1 22.7,236.9 17.4,197.1" fill="url(#g10)"/>
+  <polygon points="192.3,209.6 187.9,232.4 83.0,176.7 87.5,153.9" fill="url(#g11)"/>
+  <polygon points="216.8,186.7 198.0,218.2 84.1,92.8 102.9,61.3" fill="url(#g12)"/>
+  <polygon points="233.2,179.6 217.4,193.3 172.1,90.7 187.9,77.1" fill="url(#g13)"/>
+  <polygon points="267.0,173.4 230.5,188.6 214.8,26.0 251.2,10.9" fill="url(#g14)"/>
+  <polygon points="285.4,185.5 263.8,186.3 295.4,67.2 317.0,66.4" fill="url(#g15)"/>
+  <polygon points="316.4,200.3 276.4,188.6 367.6,49.8 407.6,61.4" fill="url(#g16)"/>
+  <polygon points="324.5,216.1 306.3,203.3 394.3,134.7 412.5,147.5" fill="url(#g17)"/>
+  <polygon points="340.8,246.3 318.8,215.7 471.9,163.9 493.9,194.5" fill="url(#g18)"/>
+  <circle cx="256" cy="256" r="50" fill="#10173F"/>
+</svg>

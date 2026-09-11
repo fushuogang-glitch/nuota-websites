@@ -1,0 +1,14 @@
+:root {
+  --nuota-navy: #10173F;
+  --nuota-black: #000000;
+  --nuota-teal: #5BB2A9;
+  --nuota-white: #FFFFFF;
+  /* Proposed UI surface, not an official primary color */
+  --nuota-ui-surface: #EEF1F5;
+  --nuota-gradient-1: linear-gradient(90deg, #114468, #EF6837);
+  --nuota-gradient-2: linear-gradient(90deg, #091142, #7925B0);
+  --nuota-gradient-3: linear-gradient(90deg, #005F66, #C8447D);
+  --nuota-gradient-4: linear-gradient(90deg, #0E3457, #CCA819);
+  --nuota-gradient-5: linear-gradient(90deg, #051F22, #C1402A);
+  --nuota-gradient-6: linear-gradient(90deg, #111D68, #EC6476);
+}
