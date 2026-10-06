@@ -4,7 +4,7 @@ export const contact = {
   topSlogan: '用诺塔 NUOTA Agentic OS · 让中国美业运营智能起来',
   email: 'fuxirui@tatazixun.com',
   phone: '17279676768',
-  company: '上海嘉塔诺塔企业管理咨询有限公司',
+  company: '上海楠鲸里循人工智能科技有限责任公司',
 }
 
 export const modelPartners = {
@@ -41,6 +41,7 @@ export const navItems = [
   { label: '美业版', href: '#beauty' },
   { label: '定价', href: '#pricing' },
   { label: '案例', href: '#cases' },
+  { label: '关于我们', href: '#about' },
 ]
 
 export const hero = {

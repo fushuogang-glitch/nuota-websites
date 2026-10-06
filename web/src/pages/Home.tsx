@@ -307,6 +307,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="about" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
+          <div className={`grid gap-8 rounded-[2rem] p-6 md:grid-cols-[0.85fr_1.15fr] md:p-10 ${cardClass}`}>
+            <div>
+              <Badge className="rounded-full bg-black text-white hover:bg-black">ABOUT NUOTA</Badge>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-black">关于诺塔</h2>
+              <p className={`mt-4 text-sm leading-7 ${mutedText}`}>诺塔 NUOTA 是面向美业门店、连锁品牌与经营团队的智能体运营系统，通过任务协同、经营跟进和数据复盘，帮助团队把目标落到每天的具体行动。</p>
+            </div>
+            <div className="grid gap-4 text-sm leading-7 text-black/70">
+              <div className="rounded-2xl border border-black/10 bg-black/[0.02] p-5">
+                <p className="text-xs font-medium tracking-[0.16em] text-black/45">官网运营主体</p>
+                <p className="mt-2 text-base font-semibold text-black">上海楠鲸里循人工智能科技有限责任公司</p>
+                <p className="mt-2">本网站为该公司运营的诺塔 NUOTA 官方产品网站，用于介绍产品、提供预约演示与业务咨询服务。</p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-black/10 p-5"><p className="text-xs font-medium tracking-[0.16em] text-black/45">官方网站</p><p className="mt-2 font-medium text-black">nuotaai.cn</p></div>
+                <div className="rounded-2xl border border-black/10 p-5"><p className="text-xs font-medium tracking-[0.16em] text-black/45">业务咨询</p><p className="mt-2 font-medium text-black">17279676768</p><p className="text-black/55">fuxirui@tatazixun.com</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="faq" className="mx-auto max-w-4xl px-4 py-16 md:px-8 md:py-20">
           <SectionHeading eyebrow="FAQ" title="常见问题" />
           <div className="mt-10 space-y-4">
@@ -332,7 +353,7 @@ export default function Home() {
               <div className="mt-6 space-y-2 text-sm text-black/60">
                 <p>官方邮箱：fuxirui@tatazixun.com</p>
                 <p>联系电话：17279676768</p>
-                <p>公司主体：上海嘉塔诺塔企业管理咨询有限公司</p>
+                <p>官网运营主体：上海楠鲸里循人工智能科技有限责任公司</p>
               </div>
             </div>
             <form className="grid gap-4">
@@ -393,8 +414,8 @@ export default function Home() {
           </div>
         </div>
         <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-white/10 px-4 pt-6 text-xs text-white/50 md:flex-row md:items-center md:justify-between md:px-8">
-          <p>© 上海嘉塔诺塔企业管理咨询有限公司</p>
-          <p>ICP备案号：待补充 · 隐私政策 / 用户协议</p>
+          <p>© 上海楠鲸里循人工智能科技有限责任公司 · 诺塔 NUOTA 官方产品网站</p>
+          <p>本网站由上海楠鲸里循人工智能科技有限责任公司运营 · 隐私政策 / 用户协议</p>
         </div>
       </footer>
     </div>
